@@ -7,6 +7,8 @@
 const cards = document.querySelectorAll('.card');
 const deck = document.querySelector('.deck');
 let toggledCards = [];
+let sec = document.querySelector('.seconds');
+let min = document.querySelector('.minutes');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -14,7 +16,7 @@ let toggledCards = [];
  *   - add each card's HTML to the page
  */
 
-/*functions*/
+/*game functions*/
 /*main click function*/
 deck.addEventListener('click', function(event){
   const clickTarget = event.target;
@@ -71,7 +73,7 @@ function shuffleCards() {
     deck.appendChild(card);
   }
 }
-shuffleCards();
+shuffleCards();//calling the function
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -88,6 +90,38 @@ function shuffle(array) {
 
     return array;
 }
+
+/*/Timer/*/
+
+var second = 0;
+var minute = 0;
+var timer = setInterval(function(){
+  second++;
+  if(second<59){
+    if(second < 10){
+      sec.textContent='0' + second;
+    } else {
+      sec.textContent = second;
+    }
+  } else if (second == 59) {
+    if(minute < 10){
+      minute++;
+      second = 0;
+      min.textContent = '0' + minute;
+    }else{
+      minute++;
+      second = 0;
+      min.textContent = minute;
+    }
+  }
+}, 1000)
+
+function clearTimer(){
+  clearInterval(timer);
+}
+
+
+
 
 
 /*

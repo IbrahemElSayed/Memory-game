@@ -81,6 +81,11 @@ h1 {
     font-size: 33px;
 }
 
+.timer{
+  display:inline-block;
+  padding-left:10px;
+}
+
 /*
  * Styles for the Score Panel
  */
