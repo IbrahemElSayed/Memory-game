@@ -67,7 +67,6 @@ h1 {
 
 
 .mismatch {
-  background: red;
   animation: mismatch 0.3s ease;
 }
 .deck .card.open {
@@ -147,6 +146,10 @@ h1 {
 
 /*styles for winning*/
 
+.hidden{
+  display: none;
+}
+
 .win-container{
   position: absolute;
   width:100%;
@@ -198,8 +201,15 @@ h1 {
   background: lavender;
   margin-top: 30px;
   padding:15px;
+  box-shadow: 5px 5px 5px grey;
 }
 
+.repeatBtn:hover{
+  cursor: pointer;
+  background:  linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  transform:scale(1.2);
+  transition: 0.3s ease-out;
+}
 
 
 

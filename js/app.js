@@ -15,6 +15,11 @@ let star1 = document.querySelector('.star1');
 let star2 = document.querySelector('.star2');
 let star3 = document.querySelector('.star3');
 let restart = document.querySelector('.restart');
+let repeatBtn = document.querySelector('.repeatBtn');
+var count =0;
+let movesDone = document.querySelector('.moves-done');
+let stars = document.querySelector('.stars-achived');
+let timeTaken = document.querySelector('.time-taken');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -38,12 +43,17 @@ function reset(event){
       moves.textContent = iteration;
       if (iteration == 15){
         star1.classList.toggle('disappear');
+        stars.textContent = 2;
       }else if(iteration == 25){
         star2.classList.toggle('disappear');
+        stars.textContent = 1;
+      }else{
+        stars.textContent = 3 + "Nice!";
       }
     }
   }
 }
+
 /*check if the card clicked is valid*/
 function isClickValid(clickTarget){
   return(
@@ -54,6 +64,7 @@ function isClickValid(clickTarget){
   );
 }
 shuffleCards();
+
 /*toggle classes {open & show}*/
 function toggleCard(clickTarget){
   clickTarget.classList.toggle('open');
@@ -71,15 +82,30 @@ function checkForMatching(){
     toggledCards[0].classList.toggle('match');
     toggledCards[1].classList.toggle('match');
     toggledCards = [];
+    count++;
+    Done();
   } else {
     setTimeout(() => {
       toggleCard(toggledCards[0]);
       toggleCard(toggledCards[1]);
+      toggledCards[0].classList.toggle('mismatch');
+      toggledCards[1].classList.toggle('mismatch');
       toggledCards = [];
     }, 750);
-    toggledCards[0].classList.toggle('mismatch');
-    toggledCards[1].classList.toggle('mismatch');
   }
+}
+
+/*/the done function :D/*/
+function Done(){
+  if(count==8){
+    clearInterval(timerSet);
+    let hiddenContent = document.querySelector('.win-container');
+    hiddenContent.classList.remove('hidden');
+    const xclass =document.querySelector('.container');
+    xclass.classList.add('hidden');
+    movesDone.textContent= iteration;
+    timeTaken.textContent = min.textContent + ":" + sec.textContent;
+  }else{console.log('Not yet :)')}
 }
 
 /*apply the shuffle function*/
@@ -90,8 +116,6 @@ function shuffleCards() {
     deck.appendChild(card);
   }
 }
-// shuffleCards();//calling the function
-
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -133,6 +157,8 @@ function timerSet(){setInterval(function(){
     }
   }
 }, 1000)}
+
+
 /*/clear timer /*/
 function clearTimer(){
   clearInterval(timerSet);
@@ -140,13 +166,22 @@ function clearTimer(){
   minute = 0;
   min.textContent = 0;
 }
+
+
  /*//reset moves to 0*/
 function resetMoves(){
   moves.textContent = 0;
   iteration = 0;
 }
+
+
 /*/reset button/*/
-restart.addEventListener('click', function(){
+restart.addEventListener('click', repeat);
+
+
+/*/the repeat function/*/
+
+function repeat(){
   clearTimer();
   resetMoves();
   const listOfCards = Array.from(cards);
@@ -154,7 +189,20 @@ restart.addEventListener('click', function(){
     listOfCards[i].classList.remove('show', 'open', 'match')
   }
   toggledCards=[];
+}
+
+
+/*/the repeat button in the winning screen/*/
+repeatBtn.addEventListener('click', function(){
+  repeat();
+  let hiddenContent = document.querySelector('.win-container');
+  hiddenContent.classList.add('hidden');
+  const xclass =document.querySelector('.container');
+  xclass.classList.remove('hidden');
+
 });
+
+/*/set the moves, stars & time on the winning screen/*/
 
 
 
