@@ -143,3 +143,69 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/*styles for winning*/
+
+.win-container{
+  position: absolute;
+  width:100%;
+  height:106%;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  align-items: center;
+  text-align: center;
+}
+
+.hidden-container{
+  margin-top: 10%
+}
+
+.congrats{
+  font-size: 50px;
+  color:white;
+}
+
+.good-work{
+  font-size: 40px;
+  color: navy;
+}
+.fa-angellist, .fa-bullhorn {
+  color:red;
+  font-size: 50px;
+  padding:5px;
+}
+
+.stat{
+  font-size: 30px;
+}
+
+.stat-left, .spans{
+  padding: 5px;
+  margin-top: 20px;
+  background: linear-gradient(190deg, cyan 0% , lightgrey 100%);
+  display: inline-block;
+  border:2px black outset;
+  width:200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.repeatBtn{
+  font-size: 20px;
+  border-radius: 10px;
+  background: lavender;
+  margin-top: 30px;
+  padding:15px;
+}
+
+
+
+
+
+
+
+
+
+/**/

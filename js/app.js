@@ -138,6 +138,7 @@ function clearTimer(){
   clearInterval(timerSet);
   second = 0;
   minute = 0;
+  min.textContent = 0;
 }
  /*//reset moves to 0*/
 function resetMoves(){
