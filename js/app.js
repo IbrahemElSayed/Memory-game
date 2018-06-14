@@ -2,13 +2,77 @@
  * Create a list that holds all of your cards
  */
 
+ /*global variables*/
 
+const cards = document.querySelectorAll('.card');
+const deck = document.querySelector('.deck');
+let toggledCards = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+/*functions*/
+/*main click function*/
+deck.addEventListener('click', function(event){
+  const clickTarget = event.target;
+  if (isClickValid(clickTarget)){
+    toggleCard(clickTarget);
+    addToggleCard(clickTarget);
+    if (toggledCards.length === 2){
+      checkForMatching()
+    }
+  }
+});
+/*check if the card clicked is valid*/
+function isClickValid(clickTarget){
+  return(
+    clickTarget.classList.contains('card')
+    && toggledCards.length < 2
+    && !toggledCards.includes(clickTarget)
+    && !clickTarget.classList.contains('match')
+  );
+}
+
+/*toggle classes {open & show}*/
+function toggleCard(clickTarget){
+  clickTarget.classList.toggle('open');
+  clickTarget.classList.toggle('show');
+}
+
+/*add the clicked card to the temporary array*/
+function addToggleCard(clickTarget){
+  toggledCards.push(clickTarget);
+  console.log(toggledCards);
+}
+
+/*the match checking function*/
+function checkForMatching(){
+  if(toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className){
+    toggledCards[0].classList.toggle('match');
+    toggledCards[1].classList.toggle('match');
+    toggledCards = [];
+  } else {
+    setTimeout(() => {
+      toggleCard(toggledCards[0]);
+      toggleCard(toggledCards[1]);
+      toggledCards = [];
+      console.log('no match')
+    }, 750);
+  }
+}
+/*apply the shuffle function*/
+function shuffleCards() {
+  const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+  const shuffledCards = shuffle(cardsToShuffle);
+  for (card of shuffledCards){
+    deck.appendChild(card);
+  }
+}
+shuffleCards();
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
