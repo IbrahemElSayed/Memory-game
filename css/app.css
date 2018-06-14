@@ -86,6 +86,10 @@ h1 {
   padding-left:10px;
 }
 
+.disappear{
+  display: none;
+}
+
 /*
  * Styles for the Score Panel
  */

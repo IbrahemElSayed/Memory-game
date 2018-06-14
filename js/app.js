@@ -9,6 +9,12 @@ const deck = document.querySelector('.deck');
 let toggledCards = [];
 let sec = document.querySelector('.seconds');
 let min = document.querySelector('.minutes');
+let moves = document.querySelector('.moves');
+let iteration = 0;
+let star1 = document.querySelector('.star1');
+let star2 = document.querySelector('.star2');
+let star3 = document.querySelector('.star3');
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,6 +31,14 @@ deck.addEventListener('click', function(event){
     addToggleCard(clickTarget);
     if (toggledCards.length === 2){
       checkForMatching()
+      /*/moves counter/*/
+      iteration++;
+      moves.textContent = iteration;
+      if (iteration == 15){
+        star1.classList.toggle('disappear');
+      }else if(iteration == 25){
+        star2.classList.toggle('disappear');
+      }
     }
   }
 });
@@ -47,7 +61,6 @@ function toggleCard(clickTarget){
 /*add the clicked card to the temporary array*/
 function addToggleCard(clickTarget){
   toggledCards.push(clickTarget);
-  console.log(toggledCards);
 }
 
 /*the match checking function*/
@@ -65,6 +78,7 @@ function checkForMatching(){
     }, 750);
   }
 }
+
 /*apply the shuffle function*/
 function shuffleCards() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
@@ -119,8 +133,6 @@ var timer = setInterval(function(){
 function clearTimer(){
   clearInterval(timer);
 }
-
-
 
 
 
