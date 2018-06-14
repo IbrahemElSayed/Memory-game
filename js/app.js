@@ -189,6 +189,7 @@ function repeat(){
     listOfCards[i].classList.remove('show', 'open', 'match')
   }
   toggledCards=[];
+  shuffleCards();
 }
 
 
