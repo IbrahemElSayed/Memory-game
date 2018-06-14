@@ -76,8 +76,9 @@ function checkForMatching(){
       toggleCard(toggledCards[0]);
       toggleCard(toggledCards[1]);
       toggledCards = [];
-      console.log('no match')
     }, 750);
+    toggledCards[0].classList.toggle('mismatch');
+    toggledCards[1].classList.toggle('mismatch');
   }
 }
 
@@ -137,15 +138,13 @@ function clearTimer(){
   clearInterval(timerSet);
   second = 0;
   minute = 0;
-  // sec.textContent = 00;
-  // min.textContent = 00;
 }
  /*//reset moves to 0*/
 function resetMoves(){
   moves.textContent = 0;
   iteration = 0;
 }
-
+/*/reset button/*/
 restart.addEventListener('click', function(){
   clearTimer();
   resetMoves();
@@ -155,6 +154,10 @@ restart.addEventListener('click', function(){
   }
   toggledCards=[];
 });
+
+
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:

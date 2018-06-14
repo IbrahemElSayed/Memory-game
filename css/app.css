@@ -65,10 +65,16 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+
+.mismatch {
+  background: red;
+  animation: mismatch 0.3s ease;
+}
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateZ(0);
     background: #02b3e4;
     cursor: default;
+    transition: 0.2s;
 }
 
 .deck .card.show {
@@ -79,6 +85,21 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    animation: right 0.5s ease;
+}
+
+@keyframes right {
+  0%{transform: scaleX(1.1);}
+  25%{transform: scaleY(1.1)}
+  50%{transform: scaleX(1.1)}
+  75%{transform: scaleY(1.1)}
+}
+
+@keyframes mismatch {
+  0%{transform: translateX(5px);}
+  25%{transform: translateX(-10px);}
+  50%{transform: translateX(5px);}
+  75%{transform: translateX(-10px);}
 }
 
 .timer{
@@ -93,7 +114,7 @@ h1 {
 .restart:hover{
   transform: scale(1.2);
   color: blue;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 /*
