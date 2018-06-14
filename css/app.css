@@ -90,6 +90,12 @@ h1 {
   display: none;
 }
 
+.restart:hover{
+  transform: scale(1.2);
+  color: blue;
+  transition: 0.5s;
+}
+
 /*
  * Styles for the Score Panel
  */

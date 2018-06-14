@@ -10,11 +10,11 @@ let toggledCards = [];
 let sec = document.querySelector('.seconds');
 let min = document.querySelector('.minutes');
 let moves = document.querySelector('.moves');
-let iteration = 0;
+var iteration = 0;
 let star1 = document.querySelector('.star1');
 let star2 = document.querySelector('.star2');
 let star3 = document.querySelector('.star3');
-
+let restart = document.querySelector('.restart');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -24,7 +24,9 @@ let star3 = document.querySelector('.star3');
 
 /*game functions*/
 /*main click function*/
-deck.addEventListener('click', function(event){
+deck.addEventListener('click', reset);
+
+function reset(event){
   const clickTarget = event.target;
   if (isClickValid(clickTarget)){
     toggleCard(clickTarget);
@@ -41,7 +43,7 @@ deck.addEventListener('click', function(event){
       }
     }
   }
-});
+}
 /*check if the card clicked is valid*/
 function isClickValid(clickTarget){
   return(
@@ -51,7 +53,7 @@ function isClickValid(clickTarget){
     && !clickTarget.classList.contains('match')
   );
 }
-
+shuffleCards();
 /*toggle classes {open & show}*/
 function toggleCard(clickTarget){
   clickTarget.classList.toggle('open');
@@ -87,7 +89,7 @@ function shuffleCards() {
     deck.appendChild(card);
   }
 }
-shuffleCards();//calling the function
+// shuffleCards();//calling the function
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -109,7 +111,8 @@ function shuffle(array) {
 
 var second = 0;
 var minute = 0;
-var timer = setInterval(function(){
+timerSet();//invoke timer
+function timerSet(){setInterval(function(){
   second++;
   if(second<59){
     if(second < 10){
@@ -128,13 +131,30 @@ var timer = setInterval(function(){
       min.textContent = minute;
     }
   }
-}, 1000)
-
+}, 1000)}
+/*/clear timer /*/
 function clearTimer(){
-  clearInterval(timer);
+  clearInterval(timerSet);
+  second = 0;
+  minute = 0;
+  // sec.textContent = 00;
+  // min.textContent = 00;
+}
+ /*//reset moves to 0*/
+function resetMoves(){
+  moves.textContent = 0;
+  iteration = 0;
 }
 
-
+restart.addEventListener('click', function(){
+  clearTimer();
+  resetMoves();
+  const listOfCards = Array.from(cards);
+  for(let i = 0;i<listOfCards.length;i++){
+    listOfCards[i].classList.remove('show', 'open', 'match')
+  }
+  toggledCards=[];
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
