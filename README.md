@@ -7,11 +7,37 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Welcome to the Memory Game :
 
-To get started, open `js/app.js` and start building out the app's functionality
+to play the game go and download the file "fend-project-memory-game"
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+head to the index.html file and open it
+
+onse the page is loaded you can start playing the game.ENJOY
+
+##Hints:
+
+1-your score is presented in stars, moves and time
+2- the stars grid:
+	*15 moves = 2 stars
+	*25 moves = 1 star
+	*less than 15 = 3 stars
+
+##Dependencies:
+
+this game was coded by :"Ibrahem El-sayed"
+email:" ibrahemelsayed788@gmail.com "
+
+--
+
+-this game was made by ATom and with the help of the Udacity team instructions and starter code
+-this game uses js, html and css
+
+-Fonts: coda & open sans
+
+-Shuffle function from http://stackoverflow.com/a/2450976 
+
+
 
 ## Contributing
 

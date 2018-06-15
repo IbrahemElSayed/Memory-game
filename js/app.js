@@ -37,7 +37,7 @@ function reset(event){
     toggleCard(clickTarget);
     addToggleCard(clickTarget);
     if (toggledCards.length === 2){
-      checkForMatching()
+      checkForMatching();
       /*/moves counter/*/
       iteration++;
       moves.textContent = iteration;
@@ -106,13 +106,13 @@ function Done(){
     movesDone.textContent= iteration;
     timeTaken.textContent = min.textContent + ":" + sec.textContent;
   }else{console.log('Not yet :)')}
-}
+};
 
 /*apply the shuffle function*/
 function shuffleCards() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
   const shuffledCards = shuffle(cardsToShuffle);
-  for (card of shuffledCards){
+  for (var card of shuffledCards){
     deck.appendChild(card);
   }
 }
@@ -187,7 +187,7 @@ function repeat(){
   const listOfCards = Array.from(cards);
   for(let i = 0;i<listOfCards.length;i++){
     listOfCards[i].classList.remove('show', 'open', 'match')
-  }
+  };
   toggledCards=[];
   shuffleCards();
 }
